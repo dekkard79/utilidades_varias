@@ -20,7 +20,22 @@ def get_formatted_duration(duration):
     """
     Converts youtube duration format (PTxxHyyMzzS) to normal hour format (HH:MI:SS)
     """
-    return(duration[2:].replace("H",":").replace("M",":").replace("S",""))
+    hours_pattern = re.compile(r'(\d+)H')
+    minutes_pattern = re.compile(r'(\d+)M')
+    seconds_pattern = re.compile(r'(\d+)S')
+    
+    hours = hours_pattern.search(duration)
+    minutes = minutes_pattern.search(duration)
+    seconds = seconds_pattern.search(duration)
+
+    hours = hours.group(1).rjust(2,"0") if hours else "00"
+    minutes = minutes.group(1).rjust(2,"0") if minutes else "00"
+    seconds = seconds.group(1).rjust(2,"0") if seconds else "00"
+    
+    return (f"{hours}:{minutes}:{seconds}")
+
+
+
 
 # token.pickle stores the user's credentials from previously successful logins
 if os.path.exists('token.pickle'):
