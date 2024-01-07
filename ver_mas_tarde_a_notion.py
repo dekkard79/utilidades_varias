@@ -84,5 +84,9 @@ for index, row in df.iterrows():
     
     create_page(my_data, my_database, my_headers)
 
+# TO DO:
+# Leer las etiquetas del csv y el dataframe y meterlas correctamente 
+# Traducir marca de leido a true false
+# Refactorizar para mejorar modularidad del código
 
 # {"enlace": {"id": "eHgM","type": "url","url": "http://youtu.be/kfdskfj"}}
